@@ -12,8 +12,7 @@ from torchvision import models
 
 # Load the model once (this will be loaded dynamically if path changes)
 def load_model():
-    current_dir = Path(__file__).parent
-    MODEL_LOAD_PATH = current_dir / "efficientnet_model.pth"
+    MODEL_LOAD_PATH = "/mount/src/asl-streamlit/demo/efficientnet_model.pth"
     if not MODEL_LOAD_PATH.exists():
         st.error(f"Model file not found at {MODEL_LOAD_PATH}")
         return None
