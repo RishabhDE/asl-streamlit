@@ -9,7 +9,7 @@ mediapipe
 opencv-python-headless
 pillow
 numpy
-torch
+torch=2.12
 torchvision
 torchaudio
 streamlit-webrtc

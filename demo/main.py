@@ -16,9 +16,9 @@ def load_model():
 
     # Load trained model
     model_info = torch.load(MODEL_LOAD_PATH, map_location=torch.device('cpu'))
-    model = models.efficientnet_b0(pretrained=False)
-    num_classes = 29  # Adjust the number of classes for your dataset
-    model.classifier[1] = nn.Linear(model.classifier[1].in_features, num_classes)
+    model = EfficientNet.from_name('efficientnet-b0')
+    num_classes = 29  # Adjust to your number of classes
+    model._fc = nn.Linear(model._fc.in_features, num_classes)
     model.load_state_dict(model_info)
     model.eval()
     return model
