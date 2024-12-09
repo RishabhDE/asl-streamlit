@@ -6,10 +6,8 @@ from utils import *
 
 import torch
 from torch import nn
+from torchvision.models import efficientnet_b0
 import sys
-sys.path.append('../')
-from neuralnet import model as nn_model
-
 
 def main():
     st.title("American Sign Language Classifier")
@@ -23,7 +21,11 @@ def main():
     model_info = torch.load(MODEL_LOAD_PATH, map_location=torch.device('cpu'))
 
     # Instantiate the EfficientNet model
-    model = nn_model.EfficientNetB0(num_classes=29).to(device)
+    # Using torchvision's implementation of EfficientNet-B0
+    model = efficientnet_b0(pretrained=False)
+    num_classes = 29  # Adjust the number of classes for your dataset
+    model.classifier[1] = nn.Linear(model.classifier[1].in_features, num_classes)
+    model = model.to(device)
 
     # Define paths
     data_path = Path("test_images/")
