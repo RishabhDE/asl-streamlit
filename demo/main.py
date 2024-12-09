@@ -17,7 +17,7 @@ def main():
     # st.write(f"Device: {device}")
 
     # Load Trained Model
-    MODEL_LOAD_PATH = "./efficientnet_model.pth"
+    MODEL_LOAD_PATH = Path(__file__).parent / "demo" / "efficientnet_model.pth"
     model_info = torch.load(MODEL_LOAD_PATH, map_location=torch.device('cpu'))
 
     # Instantiate the EfficientNet model
