@@ -1,8 +1,8 @@
 # Training
-comet-ml 
+comet-ml
 python-dotenv
 torchmetrics
-triton 
+triton
 efficientnet-pytorch
 
 # Infernece
