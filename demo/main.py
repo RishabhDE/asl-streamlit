@@ -14,7 +14,6 @@ from torchvision import models
 def load_model():
     MODEL_LOAD_PATH = "/mount/src/asl-streamlit/demo/efficientnet_model.pth"
 
-
     # Load trained model
     model_info = torch.load(MODEL_LOAD_PATH, map_location=torch.device('cpu'))
     model = models.efficientnet_b0(pretrained=False)
@@ -27,7 +26,7 @@ def load_model():
 # Real-time webcam feed callback
 class VideoProcessor:
     def __init__(self):
-        self.model = load_model()
+        self.model = load_model()  # Load model once
         self.class_names = np.array([chr(i) for i in range(ord('A'), ord('Z')+1)] + ['del', 'nothing', 'space'])
         self.detected_letters = []
 
@@ -62,18 +61,16 @@ class VideoProcessor:
 def main():
     st.title("Real-time ASL Sign Language Recognition")
 
-    # Initialize webcam
+    # Initialize webcam with Streamlit WebRTC
     webrtc_config = webrtc.WebRtcMode.SENDRECV
     video_processor = VideoProcessor()
 
     # Start the webcam feed with video processing callback
-    st_webrtc = webrtc.WebRtcMode(
+    st_webrtc = webrtc.streamlit_webrtc(
         video_processor=video_processor,
-        mode=webrtc_config
+        mode=webrtc_config,
+        video_frame_callback=video_processor.recv,
     )
-
-    # Display live video
-    st_webrtc = webrtc.WebRtcMode(video_processor=video_processor)
 
 if __name__ == "__main__":
     main()
