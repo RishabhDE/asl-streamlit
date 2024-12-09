@@ -10,3 +10,4 @@ mediapipe
 opencv-python
 pillow
 numpy
+neuralnet
