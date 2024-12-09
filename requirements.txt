@@ -4,6 +4,7 @@ python-dotenv
 torchmetrics
 triton
 efficientnet-pytorch
+theano
 
 # Infernece
 mediapipe
