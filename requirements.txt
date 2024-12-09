@@ -11,3 +11,6 @@ opencv-python
 pillow
 numpy
 neuralnet
+torch
+torchvision
+torchaudio
