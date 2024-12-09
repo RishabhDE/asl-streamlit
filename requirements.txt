@@ -4,14 +4,11 @@ python-dotenv
 torchmetrics
 triton
 efficientnet-pytorch
-theano
-
 # Infernece
 mediapipe
 opencv-python-headless
 pillow
 numpy
-neuralnet
 torch
 torchvision
 torchaudio
