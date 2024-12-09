@@ -7,6 +7,7 @@ from torch import nn
 import streamlit_webrtc as webrtc
 import cv2
 from utils import load_and_preprocess_image, predict_image
+from efficientnet_pytorch import EfficientNet
 
 from torchvision import models
 
